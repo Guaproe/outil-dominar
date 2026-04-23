@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculateur de Distance - Dominar</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0f0f1a;
+            background-image:
+                radial-gradient(ellipse at 20% 50%, rgba(120, 40, 200, 0.08) 0%, transparent 60%),
+                radial-gradient(ellipse at 80% 20%, rgba(6, 182, 212, 0.06) 0%, transparent 50%);
+            color: #e0e0e0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: linear-gradient(165deg, #1a1f35 0%, #15192e 100%);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 24px;
+            padding: 44px;
+            max-width: 580px;
+            width: 100%;
+            box-shadow:
+                0 4px 24px rgba(0, 0, 0, 0.4),
+                0 24px 80px rgba(0, 0, 0, 0.25);
+        }
+
+        .nav-tabs {
+            display: flex;
+            gap: 4px;
+            margin-bottom: 28px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 12px;
+            padding: 4px;
+        }
+
+        .nav-tabs a {
+            flex: 1;
+            text-align: center;
+            padding: 10px 16px;
+            border-radius: 9px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            text-decoration: none;
+            color: #555;
+            transition: all 0.25s;
+        }
+
+        .nav-tabs a:hover {
+            color: #888;
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .nav-tabs a.active {
+            background: rgba(6, 182, 212, 0.12);
+            color: #06b6d4;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 36px;
+        }
+
+        .header h1 {
+            font-size: 1.6rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #67e8f9, #06b6d4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 6px;
+            letter-spacing: -0.5px;
+        }
+
+        .header p {
+            color: #555;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .section {
+            margin-bottom: 16px;
+        }
+
+        .section-label {
+            font-size: 0.7rem;
+            color: #555;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 8px;
+            padding-left: 2px;
+        }
+
+        .autocomplete-wrapper {
+            position: relative;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 14px 18px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            color: #e8e8e8;
+            font-size: 0.95rem;
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            transition: all 0.25s;
+        }
+
+        input[type="text"]::placeholder {
+            color: #3a3a55;
+            font-weight: 400;
+        }
+
+        input[type="text"]:focus {
+            outline: none;
+            border-color: rgba(6, 182, 212, 0.5);
+            background: rgba(6, 182, 212, 0.03);
+            box-shadow: 0 0 0 3px rgba(6, 182, 212, 0.08);
+        }
+
+        .suggestions {
+            position: absolute;
+            top: calc(100% + 4px);
+            left: 0;
+            right: 0;
+            background: #1e2240;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            max-height: 220px;
+            overflow-y: auto;
+            z-index: 10;
+            display: none;
+            box-shadow: 0 16px 48px rgba(0, 0, 0, 0.4);
+        }
+
+        .suggestions.open {
+            display: block;
+        }
+
+        .suggestions .suggestion {
+            padding: 11px 18px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.15s;
+        }
+
+        .suggestions .suggestion:first-child {
+            border-radius: 12px 12px 0 0;
+        }
+
+        .suggestions .suggestion:last-child {
+            border-radius: 0 0 12px 12px;
+        }
+
+        .suggestions .suggestion:hover,
+        .suggestions .suggestion.active {
+            background: rgba(6, 182, 212, 0.1);
+        }
+
+        .suggestions .suggestion .sugg-coords {
+            color: #444;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-left: 12px;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .suggestions .no-result {
+            padding: 12px 18px;
+            color: #444;
+            font-size: 0.85rem;
+        }
+
+        .middle-row {
+            display: flex;
+            align-items: flex-end;
+            gap: 10px;
+            margin-bottom: 16px;
+            margin-top: 16px;
+            padding: 16px 18px;
+            background: rgba(255, 255, 255, 0.015);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            border-radius: 12px;
+        }
+
+        .camp-field {
+            flex: 1;
+        }
+
+        .camp-field label {
+            font-size: 0.7rem;
+            color: #555;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .camp-field select {
+            width: 100%;
+            padding: 10px 38px 10px 14px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 10px;
+            color: #e8e8e8;
+            font-size: 0.9rem;
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            cursor: pointer;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23555' viewBox='0 0 16 16'%3E%3Cpath d='M8 11L3 6h10z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 14px center;
+            transition: border-color 0.25s;
+        }
+
+        .camp-field select:focus {
+            outline: none;
+            border-color: rgba(6, 182, 212, 0.4);
+        }
+
+        .camp-speed {
+            color: #444;
+            font-size: 0.8rem;
+            font-weight: 600;
+            white-space: nowrap;
+            padding-bottom: 4px;
+        }
+
+        .camp-speed strong {
+            color: #06b6d4;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .btn-calculate {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, #06b6d4, #0891b2);
+            color: #fff;
+            border: none;
+            border-radius: 12px;
+            font-size: 0.95rem;
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+            cursor: pointer;
+            margin-top: 8px;
+            transition: all 0.25s;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            box-shadow: 0 4px 20px rgba(6, 182, 212, 0.25);
+        }
+
+        .btn-calculate:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 6px 28px rgba(6, 182, 212, 0.35);
+        }
+
+        .btn-calculate:active {
+            transform: translateY(0);
+            box-shadow: 0 2px 12px rgba(6, 182, 212, 0.2);
+        }
+
+        .result {
+            margin-top: 28px;
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .result.visible {
+            display: block;
+        }
+
+        .result-villages {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 20px;
+            padding: 18px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            border-radius: 14px;
+        }
+
+        .result-villages .v-block {
+            text-align: center;
+            flex: 1;
+        }
+
+        .result-villages .v-name {
+            font-weight: 700;
+            font-size: 1rem;
+            color: #e8e8e8;
+            margin-bottom: 2px;
+        }
+
+        .result-villages .v-pos {
+            font-size: 0.75rem;
+            color: #444;
+            font-weight: 600;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .result-villages .v-arrow {
+            color: rgba(6, 182, 212, 0.4);
+            font-size: 1.4rem;
+            flex-shrink: 0;
+        }
+
+        .result-stats {
+            display: flex;
+            gap: 12px;
+        }
+
+        .stat-card {
+            flex: 1;
+            text-align: center;
+            padding: 22px 16px;
+            border-radius: 14px;
+            border: 1px solid rgba(255, 255, 255, 0.04);
+        }
+
+        .stat-card.distance-card {
+            background: linear-gradient(165deg, rgba(6, 182, 212, 0.08), rgba(6, 182, 212, 0.02));
+        }
+
+        .stat-card.time-card {
+            background: linear-gradient(165deg, rgba(99, 102, 241, 0.08), rgba(99, 102, 241, 0.02));
+        }
+
+        .stat-label {
+            font-size: 0.65rem;
+            color: #555;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .distance-card .stat-value {
+            background: linear-gradient(135deg, #67e8f9, #06b6d4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .time-card .stat-value {
+            background: linear-gradient(135deg, #a5b4fc, #6366f1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stat-sub {
+            font-size: 0.7rem;
+            color: #3a3a55;
+            margin-top: 4px;
+            font-weight: 600;
+        }
+
+        .bonus-row {
+            display: flex;
+            gap: 12px;
+            margin-top: 12px;
+        }
+
+        .bonus-card {
+            flex: 1;
+            text-align: center;
+            padding: 14px 12px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            background: linear-gradient(165deg, rgba(16, 185, 129, 0.08), rgba(16, 185, 129, 0.02));
+        }
+
+        .bonus-card .bonus-label {
+            font-size: 0.65rem;
+            color: #555;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+
+        .bonus-card .bonus-value {
+            font-size: 1.3rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #6ee7b7, #10b981);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-variant-numeric: tabular-nums;
+            letter-spacing: -0.5px;
+        }
+
+        .copy-row {
+            margin-top: 14px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn-copy {
+            flex: 1;
+            padding: 10px 16px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 10px;
+            color: #555;
+            font-size: 0.8rem;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.25s;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-copy:hover {
+            border-color: rgba(6, 182, 212, 0.4);
+            color: #06b6d4;
+            background: rgba(6, 182, 212, 0.05);
+        }
+
+        .btn-copy.copied {
+            border-color: rgba(16, 185, 129, 0.5);
+            color: #10b981;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="nav-tabs">
+            <a href="index.html" class="active">Distance</a>
+            <a href="calc.html">Combat</a>
+        </div>
+
+        <div class="header">
+            <h1>Calculateur de Distance</h1>
+            <p>Calculez la distance entre deux villages</p>
+        </div>
+
+        <div class="section">
+            <div class="section-label">Village d'origine</div>
+            <div class="autocomplete-wrapper">
+                <input type="text" id="input1" placeholder="Tapez un nom..." autocomplete="off">
+                <div class="suggestions" id="suggestions1"></div>
+            </div>
+        </div>
+
+        <div class="middle-row">
+            <div class="camp-field">
+                <label>Camp d'entrainement</label>
+                <select id="camp-level"></select>
+            </div>
+            <div class="camp-speed" id="camp-info"></div>
+        </div>
+
+        <div class="section">
+            <div class="section-label">Village de destination</div>
+            <div class="autocomplete-wrapper">
+                <input type="text" id="input2" placeholder="Tapez un nom..." autocomplete="off">
+                <div class="suggestions" id="suggestions2"></div>
+            </div>
+        </div>
+
+        <button class="btn-calculate" onclick="calculateDistance()">Calculer la distance</button>
+
+        <div id="result" class="result">
+            <div class="result-villages" id="result-villages"></div>
+            <div class="result-stats">
+                <div class="stat-card distance-card">
+                    <div class="stat-label">Distance</div>
+                    <div class="stat-value" id="distance-value"></div>
+                    <div class="stat-sub" id="distance-sub"></div>
+                </div>
+                <div class="stat-card time-card">
+                    <div class="stat-label">Temps de trajet</div>
+                    <div class="stat-value" id="travel-value"></div>
+                    <div class="stat-sub" id="travel-sub"></div>
+                </div>
+            </div>
+            <div class="bonus-row">
+                <div class="bonus-card">
+                    <div class="bonus-label">Bonus vitesse +25%</div>
+                    <div class="bonus-value" id="travel-25"></div>
+                </div>
+                <div class="bonus-card">
+                    <div class="bonus-label">Bonus vitesse +50%</div>
+                    <div class="bonus-value" id="travel-50"></div>
+                </div>
+            </div>
+            <div class="copy-row">
+                <button class="btn-copy" onclick="copyResult()">Copier les resultats</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let villages = [];
+        let selectedVillage1 = null;
+        let selectedVillage2 = null;
+
+        async function loadVillages() {
+            try {
+                const res = await fetch('data.json');
+                villages = await res.json();
+            } catch (e) {
+                console.error('Erreur chargement data.json:', e);
+            }
+        }
+
+        function initCampLevel() {
+            const select = document.getElementById('camp-level');
+            for (let i = 1; i <= 20; i++) {
+                const opt = document.createElement('option');
+                opt.value = i;
+                opt.textContent = `Niveau ${i}`;
+                select.appendChild(opt);
+            }
+            select.addEventListener('change', onCampLevelChange);
+            onCampLevelChange();
+        }
+
+        function getSecondsPerKm(level) {
+            return 40 + (20 - level) * 10;
+        }
+
+        function onCampLevelChange() {
+            const level = parseInt(document.getElementById('camp-level').value);
+            const spkm = getSecondsPerKm(level);
+            document.getElementById('camp-info').innerHTML =
+                `<strong>${spkm}s</strong>/case`;
+
+            if (document.getElementById('result').classList.contains('visible') && selectedVillage1 && selectedVillage2) {
+                const distance = Math.sqrt(
+                    Math.pow(selectedVillage2.position.x - selectedVillage1.position.x, 2) +
+                    Math.pow(selectedVillage2.position.y - selectedVillage1.position.y, 2)
+                );
+                updateTravelTime(distance);
+            }
+        }
+
+        function findVillageByName(name) {
+            if (!name) return null;
+            return villages.find(v => v.name.toLowerCase() === name.trim().toLowerCase()) || null;
+        }
+
+        function setupAutocomplete(inputId, suggestionsId, getSelected, setSelected) {
+            const input = document.getElementById(inputId);
+            const suggestionsEl = document.getElementById(suggestionsId);
+            let activeIndex = -1;
+            let isOpen = false;
+
+            function closeSuggestions() {
+                isOpen = false;
+                activeIndex = -1;
+                suggestionsEl.classList.remove('open');
+                suggestionsEl.innerHTML = '';
+            }
+
+            function selectVillage(village) {
+                input.value = village.name;
+                setSelected(village);
+                closeSuggestions();
+            }
+
+            function updateActive(items) {
+                items.forEach((item, i) => {
+                    item.classList.toggle('active', i === activeIndex);
+                });
+            }
+
+            input.addEventListener('input', function () {
+                const query = this.value.trim().toLowerCase();
+                setSelected(null);
+                activeIndex = -1;
+
+                if (query.length === 0) {
+                    closeSuggestions();
+                    return;
+                }
+
+                const matches = villages.filter(v =>
+                    v.name.toLowerCase().includes(query)
+                ).slice(0, 10);
+
+                if (matches.length === 0) {
+                    suggestionsEl.innerHTML = '<div class="no-result">Aucun village trouv\u00e9</div>';
+                    suggestionsEl.classList.add('open');
+                    isOpen = true;
+                    return;
+                }
+
+                suggestionsEl.innerHTML = matches.map((v, i) =>
+                    `<div class="suggestion" data-index="${i}" data-id="${v.id}">` +
+                    `<span class="sugg-name">${highlightMatch(v.name, query)}</span>` +
+                    `<span class="sugg-coords">(${v.position.x}, ${v.position.y})</span>` +
+                    `</div>`
+                ).join('');
+
+                suggestionsEl.classList.add('open');
+                isOpen = true;
+
+                suggestionsEl.querySelectorAll('.suggestion').forEach(el => {
+                    el.addEventListener('click', function () {
+                        const village = villages.find(v => v.id === this.dataset.id);
+                        if (village) selectVillage(village);
+                    });
+                });
+            });
+
+            input.addEventListener('keydown', function (e) {
+                if (!isOpen) {
+                    if (e.key === 'Enter') {
+                        e.preventDefault();
+                        calculateDistance();
+                    }
+                    return;
+                }
+
+                const items = suggestionsEl.querySelectorAll('.suggestion');
+                if (!items.length) return;
+
+                if (e.key === 'ArrowDown') {
+                    e.preventDefault();
+                    activeIndex = Math.min(activeIndex + 1, items.length - 1);
+                    updateActive(items);
+                } else if (e.key === 'ArrowUp') {
+                    e.preventDefault();
+                    activeIndex = Math.max(activeIndex - 1, 0);
+                    updateActive(items);
+                } else if (e.key === 'Enter' && activeIndex >= 0 && items[activeIndex]) {
+                    e.preventDefault();
+                    const village = villages.find(v => v.id === items[activeIndex].dataset.id);
+                    if (village) selectVillage(village);
+                } else if (e.key === 'Escape') {
+                    closeSuggestions();
+                }
+            });
+
+            input.addEventListener('blur', function () {
+                setTimeout(() => {
+                    closeSuggestions();
+                }, 200);
+            });
+
+            input.addEventListener('focus', function () {
+                if (this.value.trim().length > 0 && !getSelected()) {
+                    this.dispatchEvent(new Event('input'));
+                }
+            });
+        }
+
+        function highlightMatch(name, query) {
+            const idx = name.toLowerCase().indexOf(query);
+            if (idx === -1) return name;
+            return name.substring(0, idx) +
+                '<strong style="color:#06b6d4">' +
+                name.substring(idx, idx + query.length) +
+                '</strong>' +
+                name.substring(idx + query.length);
+        }
+
+        function calculateDistance() {
+            if (!selectedVillage1) {
+                selectedVillage1 = findVillageByName(document.getElementById('input1').value);
+            }
+            if (!selectedVillage2) {
+                selectedVillage2 = findVillageByName(document.getElementById('input2').value);
+            }
+
+            if (!selectedVillage1 || !selectedVillage2) return;
+
+            const v1 = selectedVillage1;
+            const v2 = selectedVillage2;
+            const x1 = v1.position.x, y1 = v1.position.y;
+            const x2 = v2.position.x, y2 = v2.position.y;
+            const dx = x2 - x1, dy = y2 - y1;
+            const distance = Math.sqrt(dx * dx + dy * dy);
+
+            document.getElementById('result-villages').innerHTML = `
+                <div class="v-block">
+                    <div class="v-name">${v1.name}</div>
+                    <div class="v-pos">(${x1}, ${y1})</div>
+                </div>
+                <div class="v-arrow">\u2192</div>
+                <div class="v-block">
+                    <div class="v-name">${v2.name}</div>
+                    <div class="v-pos">(${x2}, ${y2})</div>
+                </div>
+            `;
+
+            document.getElementById('distance-value').textContent = distance.toFixed(2);
+            document.getElementById('distance-sub').textContent = `\u0394X=${dx}, \u0394Y=${dy}`;
+
+            updateTravelTime(distance);
+            document.getElementById('result').classList.add('visible');
+        }
+
+        function formatTime(totalSeconds) {
+            const t = Math.floor(totalSeconds);
+            const h = Math.floor(t / 3600);
+            const m = Math.floor((t % 3600) / 60);
+            const s = t % 60;
+
+            let str = '';
+            if (h > 0) str += `${h}h `;
+            if (m > 0 || h > 0) str += `${m}min `;
+            str += `${s}s`;
+            return str.trim();
+        }
+
+        function updateTravelTime(distance) {
+            const level = parseInt(document.getElementById('camp-level').value);
+            const secondsPerKm = getSecondsPerKm(level);
+            const totalSeconds = distance * secondsPerKm;
+
+            document.getElementById('travel-value').textContent = formatTime(totalSeconds);
+            document.getElementById('travel-sub').textContent = `Camp niv. ${level}`;
+
+            document.getElementById('travel-25').textContent = formatTime(distance * Math.round(secondsPerKm / 1.25));
+            document.getElementById('travel-50').textContent = formatTime(distance * Math.round(secondsPerKm / 1.5));
+        }
+
+        function copyResult() {
+            if (!selectedVillage1 || !selectedVillage2) return;
+            const v1Name = selectedVillage1.name;
+            const normal = document.getElementById('travel-value').textContent;
+            const b25 = document.getElementById('travel-25').textContent;
+            const b50 = document.getElementById('travel-50').textContent;
+
+            const text = `village ${v1Name} met sans ticket : ${normal} avec 25% : ${b25} avec 50% : ${b50}`;
+
+            navigator.clipboard.writeText(text).then(() => {
+                const btn = document.querySelector('.btn-copy');
+                btn.textContent = 'Copie !';
+                btn.classList.add('copied');
+                setTimeout(() => {
+                    btn.textContent = 'Copier les resultats';
+                    btn.classList.remove('copied');
+                }, 1500);
+            });
+        }
+
+        setupAutocomplete('input1', 'suggestions1', () => selectedVillage1, v => selectedVillage1 = v);
+        setupAutocomplete('input2', 'suggestions2', () => selectedVillage2, v => selectedVillage2 = v);
+        initCampLevel();
+        loadVillages();
+    </script>
+</body>
+</html>

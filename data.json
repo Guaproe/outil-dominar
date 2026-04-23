@@ -1,0 +1,762 @@
+[
+    {
+        "id": "village_1772218744577_6tqgsmpew",
+        "name": "Grinch",
+        "position": {
+            "x": 2,
+            "y": 5
+        },
+        "playerId": "3a19eb37-a5c0-4b95-9063-b9fd73c640fe",
+        "isAbandoned": false
+    },
+    {
+        "id": "village_1772218841055_bxjz5kwci",
+        "name": "Nika",
+        "position": {
+            "x": 1,
+            "y": 1
+        },
+        "playerId": "57a99d82-a4f3-4cd6-a8d6-30f1e4b80d38",
+        "isAbandoned": false
+    },
+    {
+        "id": "village_1772218876640_9c4uyug1r",
+        "name": "Julius_NovaChrono",
+        "position": {
+            "x": 0,
+            "y": 0
+        },
+        "playerId": "899142e9-f6e5-4d21-b548-0781d5a1d176",
+        "isAbandoned": false
+    },
+    {
+        "id": "village_1772218882586_6xvthrknr",
+        "name": "Guapo",
+        "position": {
+            "x": -2,
+            "y": 2
+        },
+        "playerId": "86c94e87-647d-4594-b6cf-5288886190e2",
+        "isAbandoned": false
+    },
+    {
+        "id": "village_1772218885774_3xio567e8",
+        "name": "Griffon",
+        "position": {
+            "x": -3,
+            "y": 1
+        },
+        "playerId": "e46d61c2-e504-4bb9-81ba-b38c1801003c",
+        "isAbandoned": false
+    },
+    {
+        "id": "village_1772218899408_ujir6vzhn",
+        "name": "Marx",
+        "position": {
+            "x": -1,
+            "y": -3
+        },
+        "playerId": "b7c21536-7d3f-48a1-8ea7-8454d5ad9d28",
+        "isAbandoned": false
+    },
+    {
+        "id": "village_1772218901760_di1ke2fra",
+        "name": "storm",
+        "position": {
+            "x": 2,
+            "y": 0
+        },
+        "playerId": "9f0359cd-989d-4cb0-8f8a-34aeb518c999",
+        "isAbandoned": false
+    },
+    {
+        "id": "village_1772218946474_xkoup31ba",
+        "name": "WindowDressing",
+        "position": {
+            "x": 1,
+            "y": 6
+        },
+        "playerId": "eee5c486-9566-472b-af89-34fa4a16fed2",
+        "isAbandoned": false
+    },
+    {
+        "id": "village_1772218957848_9sjz5rfib",
+        "name": "Aizen",
+        "position": {
+            "x": 4,
+            "y": 1
+        },
+        "playerId": "bea8bf07-e955-4051-9b58-8df866429d3b",
+        "isAbandoned": false
+    },
+    {
+        "id": "village_1772218965053_v2or9qces",
+        "name": "Narutosun",
+        "position": {
+            "x": 0,
+            "y": -2
+        },
+        "playerId": "d98ab045-3fe3-4c03-a898-ad187c683f99",
+        "isAbandoned": false
+    },
+    {
+        "id": "village_1772219096088_3afbh6vpn",
+        "name": "Shalashaska",
+        "position": {
+            "x": 5,
+            "y": 2
+        },
+        "playerId": "96b1ad2b-ab41-42b4-add5-5c57e172cdcf",
+        "isAbandoned": false
+    },
+    {
+        "id": "village_1772219148354_tx4sp4xan",
+        "name": "LastJopop",
+        "position": {
+            "x": 3,
+            "y": -3
+        },
+        "playerId": "af6cd218-04c6-4bee-89ab-b068b50a3d29",
+        "isAbandoned": false
+    },
+    {
+        "id": "village_1772219288509_wfq1aouwn",
+        "name": "Shark",
+        "position": {
+            "x": 0,
+            "y": 3
+        },
+        "playerId": "41a4ba79-d0b4-432e-92f9-d4d4391ded9b",
+        "isAbandoned": false
+    },
+    {
+        "id": "village_1772219366496_kybgxidzd",
+        "name": "Astaveng",
+        "position": {
+            "x": 1,
+            "y": -1
+        },
+        "playerId": "daca5f76-321b-480f-a9bb-bd7f11ba85c9",
+        "isAbandoned": false
+    },
+    {
+        "id": "village_1772219382887_305iim127",
+        "name": "James",
+        "position": {
+            "x": -1,
+            "y": 1
+        },
+        "playerId": "14e2f548-1b18-4d87-8262-9a3d5d8529eb",
+        "isAbandoned": false
+    },
+    {
+        "id": "village_1772219497016_y8qb7ve8s",
+        "name": "HeilNivek",
+        "position": {
+            "x": -5,
+            "y": 2
+        },
+        "playerId": "3e72080c-39e4-4c68-8e3d-a1c322b09afa",
+        "isAbandoned": false
+    },
+    {
+        "id": "village_1772219605928_cdhx6zh39",
+        "name": "Ivar",
+        "position": {
+            "x": 2,
+            "y": -2
+        },
+        "playerId": "eef91828-932f-418a-abad-1fb552d1fcab",
+        "isAbandoned": false
+    },
+    {
+        "id": "village_1772219668280_uk9k90rj9",
+        "name": "Gandika",
+        "position": {
+            "x": 1,
+            "y": 4
+        },
+        "playerId": "9b25a9ba-2945-4620-aa66-b0985b96ede8",
+        "isAbandoned": false
+    },
+    {
+        "id": "village_1772219690937_s2e36qmny",
+        "name": "Sann",
+        "position": {
+            "x": -2,
+            "y": 3
+        },
+        "playerId": "ebdcb0b7-e107-4e77-98d5-8708b8564044",
+        "isAbandoned": false
+    },
+    {
+        "id": "village_1772219731005_usbum0hut",
+        "name": "Ms_Itachi",
+        "position": {
+            "x": -4,
+            "y": 1
+        },
+        "playerId": "182415f7-bb17-4bf1-a2ef-7de2259d3bc0",
+        "isAbandoned": false
+    },
+    {
+        "id": "village_1772220076479_fnhs2mss8",
+        "name": "Goldy",
+        "position": {
+            "x": -2,
+            "y": 5
+        },
+        "playerId": "c84782bb-b79d-4cd1-9a12-7c2bedf94e16",
+        "isAbandoned": false
+    },
+    {
+        "id": "village_1772220221837_est81fhpo",
+        "name": "Sukuna",
+        "position": {
+            "x": 0,
+            "y": 2
+        },
+        "playerId": "434f47ae-bd71-4a01-9342-66e0721f58ca",
+        "isAbandoned": false
+    },
+    {
+        "id": "village_1772220726976_bxret2cy8",
+        "name": "GoodNight",
+        "position": {
+            "x": 3,
+            "y": 2
+        },
+        "playerId": "bd8bc221-36b3-4399-a5c2-7ecd033e4ed3",
+        "isAbandoned": false
+    },
+    {
+        "id": "village_1772220929046_w6a7g8z9m",
+        "name": "tlfavyysyqtxlsapxs",
+        "position": {
+            "x": -2,
+            "y": 6
+        },
+        "playerId": "c911a841-9b7c-4f5e-a0bb-4d60c9825327",
+        "isAbandoned": false
+    },
+    {
+        "id": "village_1772222427535_uscn55mcz",
+        "name": "Bob",
+        "position": {
+            "x": 4,
+            "y": -1
+        },
+        "playerId": "97e6cc22-c86a-4bf7-9864-d1b1ed4219da",
+        "isAbandoned": false
+    },
+    {
+        "id": "village_1772222568678_pn5cfgflx",
+        "name": "Saizan",
+        "position": {
+            "x": -3,
+            "y": -4
+        },
+        "playerId": "d32b87e4-2c80-4547-a155-2004fa1afb2c",
+        "isAbandoned": false
+    },
+    {
+        "id": "village_1772222892660_mth6z1fwu",
+        "name": "KingSlayer",
+        "position": {
+            "x": -1,
+            "y": -1
+        },
+        "playerId": "3d0b6e45-59a1-4b3e-bdcb-8a6abab5dad3",
+        "isAbandoned": false
+    },
+    {
+        "id": "village_1772223162874_whzgicn3h",
+        "name": "La Mouette",
+        "position": {
+            "x": -2,
+            "y": -1
+        },
+        "playerId": "2a23943f-b979-48ee-b1c3-2b739a680b04",
+        "isAbandoned": false
+    },
+    {
+        "id": "village_1772225289659_m9wr888e1",
+        "name": "Lady Banane",
+        "position": {
+            "x": 4,
+            "y": -3
+        },
+        "playerId": "00854072-7b76-463d-8304-f8ce66645862",
+        "isAbandoned": false
+    },
+    {
+        "id": "village_1772225877711_xqvwi7atp",
+        "name": "JoeDalton",
+        "position": {
+            "x": -2,
+            "y": -6
+        },
+        "playerId": "bea95975-186b-4ec5-bf58-ac776cf1f2e9",
+        "isAbandoned": false
+    },
+    {
+        "id": "village_1772226029466_ys7ch0yz0",
+        "name": "Hashirama",
+        "position": {
+            "x": 1,
+            "y": -6
+        },
+        "playerId": "23f04870-64e8-48bf-9a02-2a695200b605",
+        "isAbandoned": false
+    },
+    {
+        "id": "village_1772226574928_q4moz7r69",
+        "name": "Big Meech",
+        "position": {
+            "x": -4,
+            "y": 5
+        },
+        "playerId": "afab9d50-ae5a-4335-a2e4-1fab0a14d72a",
+        "isAbandoned": false
+    },
+    {
+        "id": "village_1772227974364_4czit1coo",
+        "name": "Jak",
+        "position": {
+            "x": -4,
+            "y": -2
+        },
+        "playerId": "5059139b-264f-4478-a500-6ada65ec060c",
+        "isAbandoned": false
+    },
+    {
+        "id": "village_1772228833059_l46n4vto2",
+        "name": "BoaHancock",
+        "position": {
+            "x": -5,
+            "y": 0
+        },
+        "playerId": "d05ad956-7d87-4371-8d40-85903b8b333b",
+        "isAbandoned": false
+    },
+    {
+        "id": "village_1772233297021_b2zom4fhg",
+        "name": "Scaraber",
+        "position": {
+            "x": 0,
+            "y": 5
+        },
+        "playerId": "045a655c-7954-49e0-8103-c6d37f6211d2",
+        "isAbandoned": false
+    },
+    {
+        "id": "village_1772234880853_gx87nbivs",
+        "name": "Diogène",
+        "position": {
+            "x": 5,
+            "y": 0
+        },
+        "playerId": "601c7aa9-7891-43d4-b63a-4694b50dabe2",
+        "isAbandoned": false
+    },
+    {
+        "id": "village_1772239114458_cidu32uq3",
+        "name": "Hokage",
+        "position": {
+            "x": 6,
+            "y": -3
+        },
+        "playerId": "1bddffed-a423-4570-b20e-bcf0b57385e7",
+        "isAbandoned": false
+    },
+    {
+        "id": "village_1772239456863_56ewss4eq",
+        "name": "Elbandi",
+        "position": {
+            "x": 6,
+            "y": 1
+        },
+        "playerId": "a001abd0-580f-4089-a7ab-6850200d8007",
+        "isAbandoned": false
+    },
+    {
+        "id": "village_1772240197702_cau0umwx1",
+        "name": "Naruto",
+        "position": {
+            "x": 1,
+            "y": -3
+        },
+        "playerId": "9106b4ec-aee7-4b6a-a9db-19cbe0fdb563",
+        "isAbandoned": false
+    },
+    {
+        "id": "village_1772287511939_gk446an0s",
+        "name": "Ragnarr",
+        "position": {
+            "x": 4,
+            "y": 4
+        },
+        "playerId": "b10b4709-8852-41e5-aa4e-4b430f2e2e8d",
+        "isAbandoned": false
+    },
+    {
+        "id": "village_1772320761500_rfr47vj7m",
+        "name": "Floki",
+        "position": {
+            "x": 2,
+            "y": 3
+        },
+        "playerId": "cf731f7f-c701-483c-b755-dd7afc723613",
+        "isAbandoned": false
+    },
+    {
+        "id": "village_1772373496493_omud84xx5",
+        "name": "Jules Brunet",
+        "position": {
+            "x": 3,
+            "y": -1
+        },
+        "playerId": "76b956f5-1ba1-4b6c-aea5-9cb0eed7a50f",
+        "isAbandoned": false
+    },
+    {
+        "id": "village_1772443952994_1cjxq34a7",
+        "name": "M.delormeau",
+        "position": {
+            "x": 1,
+            "y": -4
+        },
+        "playerId": "530af182-1758-4d71-a07c-bd3846cdfbd6",
+        "isAbandoned": false
+    },
+    {
+        "id": "village_1772544178254_22sp9jyys",
+        "name": "Lagertha",
+        "position": {
+            "x": -1,
+            "y": -5
+        },
+        "playerId": "041e039c-bd17-4106-b0af-b489f76d19f1",
+        "isAbandoned": false
+    },
+    {
+        "id": "village_1772563561968_dw8nua7l7",
+        "name": "Sigfreg",
+        "position": {
+            "x": 5,
+            "y": -2
+        },
+        "playerId": "34852f18-6ce0-47ea-a311-ba87c218bae2",
+        "isAbandoned": false
+    },
+    {
+        "id": "village_1772653229821_1wqhckqex",
+        "name": "meliodas5432109876@hotmail.com",
+        "position": {
+            "x": -3,
+            "y": -6
+        },
+        "playerId": "d6e163cf-438a-4dc4-b519-39db59e5a606",
+        "isAbandoned": false
+    },
+    {
+        "id": "village_1772672946903_a2nyy4s0q",
+        "name": "Kenpachi Zaraki",
+        "position": {
+            "x": 4,
+            "y": 3
+        },
+        "playerId": "fa0d7747-0d17-4630-98af-4576229a6d8f",
+        "isAbandoned": false
+    },
+    {
+        "id": "village_1772861475650_ks165ev2u",
+        "name": "Amine",
+        "position": {
+            "x": 6,
+            "y": 3
+        },
+        "playerId": "569eb19a-3024-4292-bcb4-866b06306a99",
+        "isAbandoned": false
+    },
+    {
+        "id": "village_1772861631870_58b228kwh",
+        "name": "Mod",
+        "position": {
+            "x": -6,
+            "y": -3
+        },
+        "playerId": "fa8b5a91-e5a8-45aa-beec-4f0c65a26ce1",
+        "isAbandoned": false
+    },
+    {
+        "id": "village_1772926682842_quazz89ws",
+        "name": "Ryu Min",
+        "position": {
+            "x": -2,
+            "y": -3
+        },
+        "playerId": "d206e3dc-2312-4e2b-be13-aac766b94f2d",
+        "isAbandoned": false
+    },
+    {
+        "id": "village_1772963279607_j4m0vith1",
+        "name": "Bojack Horseman",
+        "position": {
+            "x": 7,
+            "y": 0
+        },
+        "playerId": "7518ec1e-8d42-4906-9bf9-aaf96361c0c2",
+        "isAbandoned": false
+    },
+    {
+        "id": "village_1773158155485_91afbwczg",
+        "name": "SSJ_Shark",
+        "position": {
+            "x": 3,
+            "y": -5
+        },
+        "playerId": "a500208b-bc6f-4995-9e11-73b3cad11990",
+        "isAbandoned": false
+    },
+    {
+        "id": "village_1773325304560_gr1wmnszm",
+        "name": "Scorp",
+        "position": {
+            "x": 5,
+            "y": -4
+        },
+        "playerId": "4534327a-faad-4d19-9258-6c3ac99372cc",
+        "isAbandoned": false
+    },
+    {
+        "id": "village_1773403118360_cx5ezxxf2",
+        "name": "Subrak",
+        "position": {
+            "x": -3,
+            "y": -2
+        },
+        "playerId": "a53adcbf-64cd-4cd0-9523-270580af6c1d",
+        "isAbandoned": false
+    },
+    {
+        "id": "village_1773761388297_2wfsmigsl",
+        "name": "Il Padrino",
+        "position": {
+            "x": -1,
+            "y": 4
+        },
+        "playerId": "4c7aba92-6ac7-45b9-adbd-e6c259244af1",
+        "isAbandoned": false
+    },
+    {
+        "id": "village_1773915206344_49lq49w1b",
+        "name": "Artaldir",
+        "position": {
+            "x": -3,
+            "y": 4
+        },
+        "playerId": "0abc34c4-4d59-4370-94ab-bb944148b44b",
+        "isAbandoned": false
+    },
+    {
+        "id": "village_1773937793368_71audjj6s",
+        "name": "eworioz",
+        "position": {
+            "x": -7,
+            "y": 0
+        },
+        "playerId": "0ffc2214-2113-47fb-b67b-1dd4eb8f5bd5",
+        "isAbandoned": false
+    },
+    {
+        "id": "village_1774040646960_m3bnm0bzj",
+        "name": "TheDeath",
+        "position": {
+            "x": 0,
+            "y": 7
+        },
+        "playerId": "66e95879-ec0e-48fc-9acd-052763662eba",
+        "isAbandoned": false
+    },
+    {
+        "id": "village_1774097686056_h3c7bhj1c",
+        "name": "Wailhart",
+        "position": {
+            "x": -6,
+            "y": 3
+        },
+        "playerId": "7b6472f4-83f9-4dbd-be2b-1a3980d4fa16",
+        "isAbandoned": false
+    },
+    {
+        "id": "village_1774213340110_2o1khlctn",
+        "name": "Ikigai",
+        "position": {
+            "x": -1,
+            "y": 7
+        },
+        "playerId": "efbf34aa-94f7-414f-8bf6-c7b19486bc35",
+        "isAbandoned": false
+    },
+    {
+        "id": "village_1774219175565_ml5b9sx49",
+        "name": "Pray",
+        "position": {
+            "x": 5,
+            "y": 5
+        },
+        "playerId": "e8ebf3dc-f2e3-40ef-90bb-2960121d060f",
+        "isAbandoned": false
+    },
+    {
+        "id": "village_1774674689364_davujcuzo",
+        "name": "assasin",
+        "position": {
+            "x": -5,
+            "y": -1
+        },
+        "playerId": "b3d634a7-bb66-4e00-ac72-b5b83136fdf7",
+        "isAbandoned": false
+    },
+    {
+        "id": "village_1774898128222_pnf548flu",
+        "name": "Swity",
+        "position": {
+            "x": 1,
+            "y": -7
+        },
+        "playerId": "2eab1d9c-4520-4978-94d8-5f873f9b81d9",
+        "isAbandoned": false
+    },
+    {
+        "id": "village_1774976834372_cbj5x9kiu",
+        "name": "Yondaime",
+        "position": {
+            "x": 0,
+            "y": -5
+        },
+        "playerId": "43be7266-ee9c-4fb8-a380-3fa8e8f38162",
+        "isAbandoned": false
+    },
+    {
+        "id": "village_1775068760147_gxg74qnu4",
+        "name": "Svart13",
+        "position": {
+            "x": -1,
+            "y": -7
+        },
+        "playerId": "3ec38ad5-a352-4222-ade6-215f45ef9a2b",
+        "isAbandoned": false
+    },
+    {
+        "id": "village_1775229310306_0zmek9jpi",
+        "name": "Ohbadboy",
+        "position": {
+            "x": -5,
+            "y": 4
+        },
+        "playerId": "a93e5169-c14a-4a9a-8def-6ef5d9440730",
+        "isAbandoned": false
+    },
+    {
+        "id": "village_1775236406493_0ldsgktvp",
+        "name": "Ginji",
+        "position": {
+            "x": -5,
+            "y": -3
+        },
+        "playerId": "10f11487-8e98-4bd2-b4f5-27c6f92f3ead",
+        "isAbandoned": false
+    },
+    {
+        "id": "village_1775243693888_upv4tobsn",
+        "name": "kortana",
+        "position": {
+            "x": -4,
+            "y": -4
+        },
+        "playerId": "be3c3d1d-d01b-4b2f-b724-659289a054bb",
+        "isAbandoned": false
+    },
+    {
+        "id": "village_1775314677657_xrmpue3ho",
+        "name": "Daemons",
+        "position": {
+            "x": 2,
+            "y": -5
+        },
+        "playerId": "bc42972f-622e-4325-9fc9-4d1a139a5a7e",
+        "isAbandoned": false
+    },
+    {
+        "id": "village_1775378620507_7d3ntn3sj",
+        "name": "Mr louchebem",
+        "position": {
+            "x": -4,
+            "y": 3
+        },
+        "playerId": "6658f30c-c015-47dd-86c1-c6153e7f4911",
+        "isAbandoned": false
+    },
+    {
+        "id": "village_1775422002874_4m59o4s22",
+        "name": "kurosakii",
+        "position": {
+            "x": 4,
+            "y": -6
+        },
+        "playerId": "52716825-32ff-4018-9ef4-2a4c8675aeee",
+        "isAbandoned": false
+    },
+    {
+        "id": "village_1775666170218_c85kkuc9s",
+        "name": "shinryuji",
+        "position": {
+            "x": 3,
+            "y": 5
+        },
+        "playerId": "c9d4d760-7f14-4d7f-a34f-101e06501dd1",
+        "isAbandoned": false
+    },
+    {
+        "id": "village_1775745038907_70qv8542b",
+        "name": "SaidChalandon",
+        "position": {
+            "x": 6,
+            "y": -1
+        },
+        "playerId": "a45cde80-26df-4de9-a421-94f7232b26ae",
+        "isAbandoned": false
+    },
+    {
+        "id": "village_1775759619804_4snm3j1pc",
+        "name": "Waybilson@gmail.com",
+        "position": {
+            "x": -7,
+            "y": -1
+        },
+        "playerId": "dee343c5-5f65-4a62-88f6-32b77fc5a379",
+        "isAbandoned": false
+    },
+    {
+        "id": "village_1775906708127_wf3nby5wn",
+        "name": "Thorgal",
+        "position": {
+            "x": -6,
+            "y": 1
+        },
+        "playerId": "76729e04-bc0c-48b6-a35d-63da41d26d71",
+        "isAbandoned": false
+    },
+    {
+        "id": "village_1776044511355_92qky0c5f",
+        "name": "Sam",
+        "position": {
+            "x": 5,
+            "y": -5
+        },
+        "playerId": "9cb0a21c-68af-4d6b-8234-bd156e6fb99b",
+        "isAbandoned": false
+    }
+]
