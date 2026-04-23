@@ -210,6 +210,38 @@
             flex: 1;
         }
 
+        .time-field {
+            flex: 1;
+        }
+
+        .time-field label {
+            font-size: 0.7rem;
+            color: #555;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .time-field input {
+            width: 100%;
+            padding: 10px 14px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 10px;
+            color: #e8e8e8;
+            font-size: 0.9rem;
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            transition: border-color 0.25s;
+        }
+
+        .time-field input:focus {
+            outline: none;
+            border-color: rgba(6, 182, 212, 0.4);
+        }
+
         .camp-field label {
             font-size: 0.7rem;
             color: #555;
@@ -357,6 +389,70 @@
             background: linear-gradient(165deg, rgba(99, 102, 241, 0.08), rgba(99, 102, 241, 0.02));
         }
 
+        .arrival-row {
+            display: flex;
+            gap: 10px;
+            margin-top: 14px;
+        }
+
+        .arrival-card-inline {
+            flex: 1;
+            text-align: center;
+            padding: 16px 12px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            background: linear-gradient(165deg, rgba(245, 158, 11, 0.08), rgba(245, 158, 11, 0.02));
+        }
+
+        .arrival-card-inline.arrival-25 {
+            background: linear-gradient(165deg, rgba(16, 185, 129, 0.08), rgba(16, 185, 129, 0.02));
+        }
+
+        .arrival-card-inline.arrival-50 {
+            background: linear-gradient(165deg, rgba(99, 102, 241, 0.08), rgba(99, 102, 241, 0.02));
+        }
+
+        .arrival-card-inline .arrival-label {
+            font-size: 0.65rem;
+            color: #555;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+
+        .arrival-card-inline .arrival-value {
+            font-size: 1.3rem;
+            font-weight: 800;
+            font-variant-numeric: tabular-nums;
+            letter-spacing: -0.5px;
+            background: linear-gradient(135deg, #fbbf24, #f59e0b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .arrival-card-inline.arrival-25 .arrival-value {
+            background: linear-gradient(135deg, #6ee7b7, #10b981);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .arrival-card-inline.arrival-50 .arrival-value {
+            background: linear-gradient(135deg, #a5b4fc, #6366f1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .arrival-card-inline .arrival-sub {
+            font-size: 0.7rem;
+            color: #3a3a55;
+            margin-top: 4px;
+            font-weight: 600;
+        }
+
         .stat-label {
             font-size: 0.65rem;
             color: #555;
@@ -460,6 +556,71 @@
             border-color: rgba(16, 185, 129, 0.5);
             color: #10b981;
         }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 12px;
+                align-items: flex-start;
+            }
+
+            .container {
+                padding: 24px 18px;
+                border-radius: 18px;
+            }
+
+            .header h1 {
+                font-size: 1.3rem;
+            }
+
+            .middle-row {
+                flex-wrap: wrap;
+                gap: 8px;
+            }
+
+            .camp-field {
+                min-width: 0;
+                flex: 1 1 100%;
+            }
+
+            .camp-speed {
+                text-align: center;
+                width: 100%;
+            }
+
+            .result-villages {
+                gap: 10px;
+                padding: 14px;
+                flex-wrap: wrap;
+            }
+
+            .result-villages .v-name {
+                font-size: 0.85rem;
+                word-break: break-word;
+            }
+
+            .result-stats {
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+
+            .stat-card {
+                flex: 1 1 100%;
+            }
+
+            .stat-value {
+                font-size: 1.6rem;
+            }
+
+            .bonus-row {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .arrival-row {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -487,6 +648,10 @@
                 <label>Camp d'entrainement</label>
                 <select id="camp-level"></select>
             </div>
+            <div class="time-field">
+                <label>Heure d'attaque</label>
+                <input type="text" id="attack-time" placeholder="HH:MM:SS" maxlength="8">
+            </div>
             <div class="camp-speed" id="camp-info"></div>
         </div>
 
@@ -512,6 +677,23 @@
                     <div class="stat-label">Temps de trajet</div>
                     <div class="stat-value" id="travel-value"></div>
                     <div class="stat-sub" id="travel-sub"></div>
+                </div>
+            </div>
+            <div class="arrival-row" id="arrival-row" style="display:none;">
+                <div class="arrival-card-inline">
+                    <div class="arrival-label">Sans ticket</div>
+                    <div class="arrival-value" id="arrival-value"></div>
+                    <div class="arrival-sub" id="arrival-sub"></div>
+                </div>
+                <div class="arrival-card-inline arrival-25">
+                    <div class="arrival-label">Ticket +25%</div>
+                    <div class="arrival-value" id="arrival-25"></div>
+                    <div class="arrival-sub" id="arrival-25-sub"></div>
+                </div>
+                <div class="arrival-card-inline arrival-50">
+                    <div class="arrival-label">Ticket +50%</div>
+                    <div class="arrival-value" id="arrival-50"></div>
+                    <div class="arrival-sub" id="arrival-50-sub"></div>
                 </div>
             </div>
             <div class="bonus-row">
@@ -749,12 +931,66 @@
             const level = parseInt(document.getElementById('camp-level').value);
             const secondsPerKm = getSecondsPerKm(level);
             const totalSeconds = distance * secondsPerKm;
+            const totalSeconds25 = distance * Math.round(secondsPerKm / 1.25);
+            const totalSeconds50 = distance * Math.round(secondsPerKm / 1.5);
 
             document.getElementById('travel-value').textContent = formatTime(totalSeconds);
             document.getElementById('travel-sub').textContent = `Camp niv. ${level}`;
 
-            document.getElementById('travel-25').textContent = formatTime(distance * Math.round(secondsPerKm / 1.25));
-            document.getElementById('travel-50').textContent = formatTime(distance * Math.round(secondsPerKm / 1.5));
+            document.getElementById('travel-25').textContent = formatTime(totalSeconds25);
+            document.getElementById('travel-50').textContent = formatTime(totalSeconds50);
+
+            updateArrivalTime(totalSeconds, totalSeconds25, totalSeconds50);
+        }
+
+        function computeArrival(totalSeconds) {
+            const attackTimeInput = document.getElementById('attack-time').value.trim();
+            if (!attackTimeInput) return null;
+
+            const parts = attackTimeInput.split(':').map(Number);
+            if (parts.length < 2 || parts.some(isNaN)) return null;
+            const hours = parts[0];
+            const minutes = parts[1];
+            const seconds = parts[2] || 0;
+
+            const totalInputSeconds = hours * 3600 + minutes * 60 + seconds;
+            const arrivalTotalSeconds = totalInputSeconds + totalSeconds;
+
+            const arrH = Math.floor(arrivalTotalSeconds / 3600) % 24;
+            const arrM = Math.floor((arrivalTotalSeconds % 3600) / 60);
+            const arrS = Math.floor(arrivalTotalSeconds % 60);
+            const days = Math.floor(arrivalTotalSeconds / 86400);
+
+            return {
+                str: `${String(arrH).padStart(2, '0')}:${String(arrM).padStart(2, '0')}:${String(arrS).padStart(2, '0')}`,
+                days: days
+            };
+        }
+
+        function updateArrivalTime(totalSeconds, totalSeconds25, totalSeconds50) {
+            const arrivalRow = document.getElementById('arrival-row');
+            const normal = computeArrival(totalSeconds);
+            const b25 = computeArrival(totalSeconds25);
+            const b50 = computeArrival(totalSeconds50);
+
+            if (!normal && !b25 && !b50) {
+                arrivalRow.style.display = 'none';
+                return;
+            }
+
+            if (normal) {
+                document.getElementById('arrival-value').textContent = normal.str;
+                document.getElementById('arrival-sub').textContent = normal.days > 0 ? `J+${normal.days}` : '';
+            }
+            if (b25) {
+                document.getElementById('arrival-25').textContent = b25.str;
+                document.getElementById('arrival-25-sub').textContent = b25.days > 0 ? `J+${b25.days}` : '';
+            }
+            if (b50) {
+                document.getElementById('arrival-50').textContent = b50.str;
+                document.getElementById('arrival-50-sub').textContent = b50.days > 0 ? `J+${b50.days}` : '';
+            }
+            arrivalRow.style.display = '';
         }
 
         function copyResult() {
@@ -763,8 +999,15 @@
             const normal = document.getElementById('travel-value').textContent;
             const b25 = document.getElementById('travel-25').textContent;
             const b50 = document.getElementById('travel-50').textContent;
+            const arrivalRow = document.getElementById('arrival-row');
 
-            const text = `village ${v1Name} met sans ticket : ${normal} avec 25% : ${b25} avec 50% : ${b50}`;
+            let text = `village ${v1Name} met sans ticket : ${normal} avec 25% : ${b25} avec 50% : ${b50}`;
+            if (arrivalRow.style.display !== 'none') {
+                const arrNormal = document.getElementById('arrival-value').textContent;
+                const arr25 = document.getElementById('arrival-25').textContent;
+                const arr50 = document.getElementById('arrival-50').textContent;
+                text += ` | arrivée sans ticket : ${arrNormal} avec 25% : ${arr25} avec 50% : ${arr50}`;
+            }
 
             navigator.clipboard.writeText(text).then(() => {
                 const btn = document.querySelector('.btn-copy');
@@ -781,6 +1024,31 @@
         setupAutocomplete('input2', 'suggestions2', () => selectedVillage2, v => selectedVillage2 = v);
         initCampLevel();
         loadVillages();
+
+        const attackInput = document.getElementById('attack-time');
+        attackInput.addEventListener('input', function () {
+            let raw = this.value.replace(/[^\d]/g, '');
+            if (raw.length > 6) raw = raw.substring(0, 6);
+            let formatted = '';
+            for (let i = 0; i < raw.length; i++) {
+                if (i === 2 || i === 4) formatted += ':';
+                formatted += raw[i];
+            }
+            this.value = formatted;
+
+            if (document.getElementById('result').classList.contains('visible') && selectedVillage1 && selectedVillage2) {
+                const distance = Math.sqrt(
+                    Math.pow(selectedVillage2.position.x - selectedVillage1.position.x, 2) +
+                    Math.pow(selectedVillage2.position.y - selectedVillage1.position.y, 2)
+                );
+                const level = parseInt(document.getElementById('camp-level').value);
+                const secondsPerKm = getSecondsPerKm(level);
+                const totalSeconds = distance * secondsPerKm;
+                const totalSeconds25 = distance * Math.round(secondsPerKm / 1.25);
+                const totalSeconds50 = distance * Math.round(secondsPerKm / 1.5);
+                updateArrivalTime(totalSeconds, totalSeconds25, totalSeconds50);
+            }
+        });
     </script>
 </body>
 </html>

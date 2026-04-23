@@ -580,36 +580,207 @@
           grid-template-columns: 1fr;
         }
 
-        .units-grid {
-          grid-template-columns: repeat(3, 1fr);
+        .container {
+          padding: 28px 20px;
+          border-radius: 18px;
+        }
+
+        body {
+          padding: 12px;
         }
       }
 
       @media (max-width: 600px) {
+        body {
+          padding: 8px;
+        }
+
+        .container {
+          padding: 16px 12px;
+          border-radius: 14px;
+        }
+
+        h1 {
+          font-size: 1.2em;
+        }
+
+        .subtitle {
+          font-size: 0.82em;
+          margin-bottom: 18px;
+        }
+
+        .nav-tabs a {
+          font-size: 0.72rem;
+          padding: 8px 10px;
+        }
+
+        .setup {
+          gap: 16px;
+          margin-bottom: 16px;
+        }
+
+        .army-panel {
+          padding: 14px 10px;
+          border-radius: 12px;
+        }
+
+        .army-header {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 10px;
+          margin-bottom: 14px;
+          padding-bottom: 12px;
+        }
+
+        .army-summary {
+          text-align: left;
+          width: 100%;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        }
+
+        .army-panel h2 {
+          font-size: 1.15em;
+        }
+
         .units-grid {
-          grid-template-columns: 1fr;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 8px;
+        }
+
+        .unit-card {
+          padding: 8px 6px;
+          border-radius: 8px;
+        }
+
+        .unit-icon {
+          font-size: 1.2em;
+          margin-bottom: 4px;
+        }
+
+        .unit-card label {
+          font-size: 0.72em;
+          margin-bottom: 4px;
+        }
+
+        .unit-card input {
+          padding: 6px 4px;
+          font-size: 0.9em;
+          border-radius: 6px;
+        }
+
+        .section-header {
+          font-size: 0.62rem;
+          margin-bottom: 10px;
+        }
+
+        .bonus-buttons {
+          flex-wrap: wrap;
+          gap: 6px;
+          margin-bottom: 12px;
+        }
+
+        .bonus-btn {
+          flex: 1 1 calc(50% - 3px);
+          min-width: 0;
+          padding: 8px 6px;
+          font-size: 0.78em;
+          border-radius: 8px;
+        }
+
+        .bonus-section {
+          padding: 10px;
+          border-radius: 10px;
         }
 
         .bonus-grid {
-          grid-template-columns: 1fr;
+          grid-template-columns: 1fr 1fr;
+          gap: 8px;
+        }
+
+        .bonus-item label {
+          font-size: 0.62rem;
+          margin-bottom: 4px;
+        }
+
+        .bonus-item input {
+          padding: 6px 8px;
+          font-size: 0.85em;
+          border-radius: 6px;
+        }
+
+        .presets {
+          gap: 6px;
+          margin-bottom: 18px;
+        }
+
+        .preset-btn {
+          font-size: 0.78em;
+          padding: 6px 12px;
+        }
+
+        .button-container {
+          flex-direction: column;
+          gap: 10px;
+          margin: 20px 0;
+        }
+
+        button {
+          width: 100%;
+          padding: 12px 20px;
+          font-size: 0.9rem;
+          border-radius: 10px;
+        }
+
+        .result {
+          padding: 18px 12px;
+          border-radius: 12px;
+          margin-top: 16px;
+        }
+
+        .result h2 {
+          font-size: 1.2em;
+          margin-bottom: 18px;
         }
 
         .forces,
         .losses,
         .points {
           grid-template-columns: 1fr;
+          gap: 12px;
         }
 
-        h1 {
-          font-size: 1.5em;
+        .force-box,
+        .loss-box,
+        .point-box {
+          padding: 14px;
+          border-radius: 10px;
         }
 
-        .button-container {
-          flex-direction: column;
+        .force-box strong {
+          font-size: 1.4em;
         }
 
-        button {
-          width: 100%;
+        .point-box strong {
+          font-size: 1.8em;
+        }
+
+        .loss-box h4 {
+          font-size: 0.95em;
+          margin-bottom: 10px;
+        }
+
+        .loss-item {
+          padding: 6px 0;
+        }
+
+        .loss-item span {
+          font-size: 0.9em;
+        }
+
+        .loss-item strong {
+          font-size: 1em;
         }
       }
     </style>
