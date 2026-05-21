@@ -1703,7 +1703,8 @@
 
         async function loadVillages() {
             try {
-                const res = await fetch('data.json');
+                const cacheBuster = Date.now();
+                const res = await fetch(`data.json?v=${cacheBuster}`, { cache: 'no-store' });
                 villages = await res.json();
             } catch (e) {
                 console.error('Erreur chargement data.json:', e);
