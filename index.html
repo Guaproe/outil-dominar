@@ -1698,6 +1698,7 @@
 
         /* ========== DISTANCE PAGE ========== */
         let villages = [];
+        let playerPositionById = new Map();
         let selectedVillage1 = null;
         let selectedVillage2 = null;
 
@@ -1706,8 +1707,43 @@
                 const cacheBuster = Date.now();
                 const res = await fetch(`data.json?v=${cacheBuster}`, { cache: 'no-store' });
                 villages = await res.json();
+                buildPlayerPositionIndex();
             } catch (e) {
                 console.error('Erreur chargement data.json:', e);
+            }
+        }
+
+        function getVillagePosition(village) {
+            if (!village) return { x: 0, y: 0 };
+
+            if (
+                village.position &&
+                Number.isFinite(village.position.x) &&
+                Number.isFinite(village.position.y)
+            ) {
+                return { x: village.position.x, y: village.position.y };
+            }
+
+            if (Number.isFinite(village.x) && Number.isFinite(village.y)) {
+                return { x: village.x, y: village.y };
+            }
+
+            if (village.playerId && playerPositionById.has(village.playerId)) {
+                return playerPositionById.get(village.playerId);
+            }
+
+            return { x: 0, y: 0 };
+        }
+
+        function buildPlayerPositionIndex() {
+            playerPositionById = new Map();
+
+            for (const village of villages) {
+                if (!village || !village.playerId || village.isAbandoned) continue;
+                if (playerPositionById.has(village.playerId)) continue;
+
+                const position = getVillagePosition(village);
+                playerPositionById.set(village.playerId, position);
             }
         }
 
@@ -1735,8 +1771,8 @@
 
             if (document.getElementById('dist-result').classList.contains('visible') && selectedVillage1 && selectedVillage2) {
                 const distance = Math.sqrt(
-                    Math.pow(selectedVillage2.position.x - selectedVillage1.position.x, 2) +
-                    Math.pow(selectedVillage2.position.y - selectedVillage1.position.y, 2)
+                    Math.pow(getVillagePosition(selectedVillage2).x - getVillagePosition(selectedVillage1).x, 2) +
+                    Math.pow(getVillagePosition(selectedVillage2).y - getVillagePosition(selectedVillage1).y, 2)
                 );
                 updateTravelTime(distance);
             }
@@ -1796,7 +1832,7 @@
                 suggestionsEl.innerHTML = matches.map((v, i) =>
                     `<div class="suggestion" data-index="${i}" data-id="${v.id}">` +
                     `<span class="sugg-name">${highlightMatch(v.name, query)}</span>` +
-                    `<span class="sugg-coords">(${v.position.x}, ${v.position.y})</span>` +
+                    `<span class="sugg-coords">(${getVillagePosition(v).x}, ${getVillagePosition(v).y})</span>` +
                     `</div>`
                 ).join('');
 
@@ -1875,8 +1911,10 @@
 
             const v1 = selectedVillage1;
             const v2 = selectedVillage2;
-            const x1 = v1.position.x, y1 = v1.position.y;
-            const x2 = v2.position.x, y2 = v2.position.y;
+            const pos1 = getVillagePosition(v1);
+            const pos2 = getVillagePosition(v2);
+            const x1 = pos1.x, y1 = pos1.y;
+            const x2 = pos2.x, y2 = pos2.y;
             const dx = x2 - x1, dy = y2 - y1;
             const distance = Math.sqrt(dx * dx + dy * dy);
 
@@ -2104,8 +2142,8 @@
 
             if (document.getElementById('dist-result').classList.contains('visible') && selectedVillage1 && selectedVillage2) {
                 const distance = Math.sqrt(
-                    Math.pow(selectedVillage2.position.x - selectedVillage1.position.x, 2) +
-                    Math.pow(selectedVillage2.position.y - selectedVillage1.position.y, 2)
+                    Math.pow(getVillagePosition(selectedVillage2).x - getVillagePosition(selectedVillage1).x, 2) +
+                    Math.pow(getVillagePosition(selectedVillage2).y - getVillagePosition(selectedVillage1).y, 2)
                 );
                 const level = parseInt(document.getElementById('camp-level').value);
                 const secondsPerKm = getSecondsPerKm(level);
